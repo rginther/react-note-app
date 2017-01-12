@@ -11,13 +11,19 @@
     <script src="https://fb.me/react-dom-0.14.7.min.js"></script>
 
     <script type="text/javascript">
+      var notes = [
+        { id: 1, content: 'Learn React' },
+        { id: 2, content: 'Get Lunch' },
+        { id: 3, content: 'Learn React Native' }
+      ]
+
+      var notesListItems = notes.map(function (message) {
+        return React.createElement('li', { key: message.id }, message.content)
+      })
+
       var notesList = React.createElement('section', {},
-        React.createElement('h1', {}, 'You have 3 notes'),
-        React.createElement('ul', {},
-          React.createElement('li', {}, 'Learn React'),
-          React.createElement('li', {}, 'Get Lunch'),
-          React.createElement('li', {}, 'Learn React Native')
-        )
+        React.createElement('h1', {}, 'You have ', notes.length, ' reminders'),
+        React.createElement('ul', {}, notesListItems)
       )
 
       ReactDOM.render(notesList, document.getElementById('entry-point'))
